@@ -27,7 +27,7 @@ LocalStorageHelper.setAppPrefix('yourPrefix');
 **Step 3:** Start using
 
 ```ts
-   const account = new StorageHelper('account');
+   const account = new LocalStorageHelper('account');
    account.save(someData);
 ```
 
@@ -54,7 +54,7 @@ class Account {
 
 class AccountService {
   private readonly subAccount: BehaviorSubject<Account>;
-  private readonly accountStorage: StorageHelper<Account> = new StorageHelper<Account>('account');
+  private readonly accountStorage: LocalStorageHelper<Account> = new LocalStorageHelper<Account>('account');
 
   constructor() {
     this.subAccount = new BehaviorSubject(this.accountStorage.restoreAs(Account));

@@ -1,4 +1,4 @@
-export class LocalStorageHelper<T extends new (options: any) => T> {
+export class LocalStorageHelper<T = any> {
   protected static APP_PREFIX: string;
   protected readonly key: string;
 
@@ -17,7 +17,7 @@ export class LocalStorageHelper<T extends new (options: any) => T> {
   }
 
 
-  public save(data: new (options: any) => T | any): void {
+  public save(data: T | any): void {
     if (!data) {
       return localStorage.removeItem(this.key);
     }
@@ -32,7 +32,7 @@ export class LocalStorageHelper<T extends new (options: any) => T> {
   }
 
 
-  public restoreAs(Type?: new (options: any) => T): T | null {
+  public restoreAs(Type?: T | any): T | null {
     const data: string | null = localStorage.getItem(this.key);
 
     if (!data) {
