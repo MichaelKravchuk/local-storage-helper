@@ -5,9 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "tsc",
-    "build": "tsc"
+    "build": "tsc",
+    "publish": "tsc npm publish"
   },
   "keywords": [],
   "author": "",

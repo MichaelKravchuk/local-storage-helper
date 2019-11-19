@@ -1,19 +1,19 @@
-export class StorageHelper<T extends new (options: any) => T> {
+export class LocalStorageHelper<T extends new (options: any) => T> {
   protected static APP_PREFIX: string;
   protected readonly key: string;
 
 
   constructor(storageKey: string) {
-    if (!StorageHelper.APP_PREFIX) {
-      throw new Error(`App prefix wasn\`t set! \n Set it by using: StorageHelper.setAppPrefix('yourPrefix')`);
+    if (!LocalStorageHelper.APP_PREFIX) {
+      throw new Error(`App prefix wasn\`t set! \n Set it by using: LocalStorageHelper.setAppPrefix('yourPrefix')`);
     } else {
-      this.key = `${StorageHelper.APP_PREFIX}:${storageKey}`;
+      this.key = `${LocalStorageHelper.APP_PREFIX}:${storageKey}`;
     }
   }
 
 
   public static setAppPrefix(value: string): void {
-    StorageHelper.APP_PREFIX = value;
+      LocalStorageHelper.APP_PREFIX = value;
   }
 
 
