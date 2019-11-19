@@ -27,7 +27,7 @@ LocalStorageHelper.setAppPrefix('yourPrefix');
 **Step 3:** Start using
 
 ```ts
-   const account new StorageHelper('account');
+   const account = new StorageHelper('account');
    account.save(someData);
 ```
 
