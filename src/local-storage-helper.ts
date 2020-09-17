@@ -17,6 +17,16 @@ export class LocalStorageHelper<T = any> {
   }
 
 
+  public static clearAll(): void {
+    const regExp = new RegExp(LocalStorageHelper.APP_PREFIX + ':');
+    Object.keys(localStorage).forEach(key => {
+      if (regExp.test(key)){
+        localStorage.removeItem(key);
+      }
+    })
+  }
+
+
   public save(data: T | any): void {
     if (!data) {
       return localStorage.removeItem(this.key);
@@ -32,10 +42,13 @@ export class LocalStorageHelper<T = any> {
   }
 
 
-  public restoreAs(Type?: T | any): T | null {
+  public restoreAs(Type?: T | any, ignoreNoData = false): T | null {
     const data: string | null = localStorage.getItem(this.key);
 
     if (!data) {
+      if (Type && ignoreNoData) {
+        return new Type(JSON.parse(data));
+      }
       return null;
     } else if (!Type) {
       return JSON.parse(data);
